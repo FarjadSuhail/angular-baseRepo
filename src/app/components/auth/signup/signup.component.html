@@ -1,0 +1,179 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Dashboard</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+      <h2>Register</h2>
+<div class="col-lg-4">
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="">
+        <mat-label>First Name </mat-label>
+        <input matInput placeholder="Enter your First Name" maxlength="15" minlength="4" formControlName="firstName"
+          autocomplete="off" />
+        <mat-hint>Enter your First Name</mat-hint>
+        <mat-error *ngIf="
+      isControlHasError(
+        'firstName',
+        'required'
+      )
+    ">
+          <div>Required</div>
+        </mat-error>
+        <mat-error *ngIf="
+      isControlHasError(
+        'firstName',
+        'minlength'
+      )
+    ">
+          <div>
+            First Name Should be minimum 4
+            characters
+          </div>
+        </mat-error>
+        <mat-error *ngIf="
+      isControlHasError(
+        'firstName',
+        'maxlength'
+      )
+    ">
+          <div>
+            First Name can be be maximum
+            15 characters
+          </div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="">
+        <mat-label>Last Name </mat-label>
+        <input matInput placeholder="Enter your Last Name" maxlength="15" minlength="4" formControlName="lastName"
+          autocomplete="off" />
+        <mat-hint>Enter your Last Name</mat-hint>
+        <mat-error *ngIf="
+      isControlHasError(
+        'lastName',
+        'required'
+      )
+    ">
+          <div>Required</div>
+        </mat-error>
+        <mat-error *ngIf="
+      isControlHasError(
+        'lastName',
+        'minlength'
+      )
+    ">
+          <div>
+            Last Name Should be minimum 4
+            characters
+          </div>
+        </mat-error>
+        <mat-error *ngIf="
+      isControlHasError(
+        'lastName',
+        'maxlength'
+      )
+    ">
+          <div>
+            Last Name can be be maximum
+            15 characters
+          </div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="user-field auth-field">
+        <mat-label>Primary email</mat-label>
+        <input matInput type="email" name="email" placeholder="Email address" maxlength="50" formControlName="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="off" email="true">
+        <mat-hint>username@gmail.com</mat-hint>
+        <mat-error *ngIf="
+          isControlHasError(
+            'email',
+            'required'
+          )
+        ">
+          <div>Required</div>
+        </mat-error>
+        <mat-error *ngIf="
+          isControlHasError(
+            'email',
+            'maxlength'
+          )
+        ">
+          <div>
+            Email Should be maximum 50
+            characters
+          </div>
+        </mat-error>
+        <mat-error *ngIf="
+          isControlHasError(
+            'email',
+            'pattern'
+          )
+        ">
+          <div>
+            Please enter email address in correct format i.e. username@gmail.com
+          </div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="phide ? 'password' : 'text'" minlength="8" maxlength="20" placeholder="Enter Password"
+          formControlName="password" autocomplete="off" />
+        <i matSuffix (click)="phide = !phide" class="far" [ngClass]="{
+          'fa-eye': !phide,
+          'fa-eye-slash': phide
+        }"></i>
+        <mat-hint>Enter your Password</mat-hint>
+        <mat-error *ngIf="
+          isControlHasError(
+            'password',
+            'required'
+          )
+        ">
+          <div>
+            Required
+          </div>
+        </mat-error>
+        <mat-error *ngIf="
+          isControlHasError(
+            'password',
+            'minlength'
+          )
+        ">
+          <div>
+            Password should atleast be of 8
+            characters
+          </div>
+        </mat-error>
+        <mat-error *ngIf="
+          isControlHasError(
+            'password',
+            'maxlength'
+          )
+        ">
+          <div>
+            password can be maximum 20
+            characters long
+          </div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary" (click)="submit()">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Register
+      </button>
+      <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+</div>
+    </div>
+  </div>
+</div>
